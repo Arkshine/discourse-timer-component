@@ -76,9 +76,7 @@ export default class Timer extends Component {
   }
 
   get pauseButtonLabel() {
-    return !this.counterRunning && !this.seconds
-      ? themePrefix("waiting")
-      : themePrefix(this.counterRunning ? "pause" : "resume");
+    return themePrefix(this.counterRunning || this.seconds === 0 ? "pause" : "resume");
   }
 
   get stopButtonDisabled() {
