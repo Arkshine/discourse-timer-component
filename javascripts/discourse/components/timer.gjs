@@ -22,13 +22,11 @@ export default class Timer extends Component {
           @class="read-task"
           @action={{fn this.start settings.read_task_timer}}
           @label={{themePrefix "read_task"}}
-          @disabled={{this.timerButtonsDisabled}}
         />
         <DButton
           @class="enter-room"
           @action={{fn this.start settings.enter_room_timer}}
           @label={{themePrefix "enter_room"}}
-          @disabled={{this.timerButtonsDisabled}}
         />
       </div>
 
