@@ -8,3 +8,11 @@ outlet_location:
     - "header-list-container-bottom"
   description: "Changes the position of the timer on the page."
   refresh: true
+read_task_timer:
+  default: 90
+  type: "integer"
+  description: "Timer in seconds"
+enter_room_timer:
+  default: 480
+  type: "integer"
+  description: "Timer in seconds"
