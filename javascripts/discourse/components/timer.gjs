@@ -11,7 +11,11 @@ import DButton from "discourse/components/d-button";
 export default class Timer extends Component {
   @tracked seconds = 0;
   @tracked timer = null;
-  initialSeconds = 0;
+  timerType = '';
+  initialSeconds = {
+    shortTimer: settings.read_task_timer,
+    longTimer: settings.enter_room_timer
+  };
 
   @notEmpty("timer") counterRunning;
 
@@ -20,12 +24,12 @@ export default class Timer extends Component {
       <div class="buttons">
         <DButton
           @class="read-task"
-          @action={{fn this.start settings.read_task_timer}}
+          @action={{fn this.start "shortTimer"}}
           @label={{themePrefix "read_task"}}
         />
         <DButton
           @class="enter-room"
-          @action={{fn this.start settings.enter_room_timer}}
+          @action={{fn this.start "longTimer"}}
           @label={{themePrefix "enter_room"}}
         />
       </div>
@@ -53,8 +57,10 @@ export default class Timer extends Component {
   </template>
 
   @action
-  start(duration) {
-    this.seconds = this.initialSeconds = duration;
+  start(type) {
+    this.#stopCounter();
+    this.timerType = type;
+    this.seconds = this.initialSeconds[type];
     this.#startCounter();
   }
 
@@ -106,7 +112,10 @@ export default class Timer extends Component {
     return later(
       this,
       function () {
-        this.seconds = this.seconds <= 0 ? this.initialSeconds : this.seconds - 1;
+        this.seconds = this.seconds <= 0
+          ? this.initialSeconds[this.timerType === 'shortTimer' ? "longTimer" : "shortTimer"]
+          : this.seconds - 1;
+
         this.timer = this.#runCounter();
       },
       1000
