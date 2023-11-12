@@ -1,0 +1,9 @@
+en:
+  theme_metadata:
+    description: "Description"
+  read_task: Read Task
+  enter_room: Enter Room
+  pause: Pause
+  resume: Resume
+  stop: Stop
+  waiting: Waiting...

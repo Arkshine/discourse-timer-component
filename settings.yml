@@ -1,0 +1,10 @@
+outlet_location:
+  default: "above-site-header"
+  type: "enum"
+  choices:
+    - "below-site-header"
+    - "above-site-header"
+    - "above-main-container"
+    - "header-list-container-bottom"
+  description: "Changes the position of the timer on the page."
+  refresh: true
