@@ -111,7 +111,7 @@ export default class Timer extends Component {
       this,
       function () {
         this.seconds = this.seconds <= 0
-          ? this.initialSeconds[this.timerType === 'shortTimer' ? "longTimer" : "shortTimer"]
+          ? this.initialSeconds[this.timerType = this.timerType === 'shortTimer' ? "longTimer" : "shortTimer"]
           : this.seconds - 1;
 
         this.timer = this.#runCounter();
